@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Sign In': 'تسجيل الدخول',
             
             // Home page
-            'Streamline Your Shipping Operations with Circle Code': 'تبسيط عمليات الشحن معع فالكون',
+            'Streamline Your Shipping Operations with Circle Code': 'تبسيط عمليات الشحن مع Circle Code',
             'Join thousands of sellers who have revolutionized their delivery experience. Fast, reliable, and cost-effective shipping solutions designed for businesses like yours.': 'انضم إلى آلاف البائعين الذين غيروا تجربة التوصيل الخاصة بهم. حلول شحن سريعة وموثوقة وفعالة من حيث التكلفة مصممة للشركات مثل شركتك.',
             'Get Started': 'ابدأ الآن',
             'Contact Sales': 'اتصل بالمبيعات',
