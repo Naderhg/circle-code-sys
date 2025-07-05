@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Join thousands of sellers who have revolutionized their delivery experience. Fast, reliable, and cost-effective shipping solutions designed for businesses like yours.': 'انضم إلى آلاف البائعين الذين غيروا تجربة التوصيل الخاصة بهم. حلول شحن سريعة وموثوقة وفعالة من حيث التكلفة مصممة للشركات مثل شركتك.',
             'Get Started': 'ابدأ الآن',
             'Contact Sales': 'اتصل بالمبيعات',
-            'Why Choose Circle Code Shipping?': 'لماذا تختار فالكون للشحن؟',
+            'Why Choose Circle Code Shipping?': 'لماذا تختار Circle Code للشحن؟',
             'We offer comprehensive shipping solutions to help your business thrive': 'نقدم حلول شحن شاملة لمساعدة عملك على الازدهار',
             'Fast Delivery': 'توصيل سريع',
             'Same-day and next-day delivery options to keep your customers satisfied': 'خيارات التوصيل في نفس اليوم واليوم التالي للحفاظ على رضا عملائك',
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'What Our Sellers Say': 'ماذا يقول بائعونا',
             'Join thousands of satisfied clients who trust Circle Code with their shipping needs': 'انضم إلى آلاف العملاء الراضين الذين يثقون بفالكون لتلبية احتياجات الشحن الخاصة بهم',
             'Ready to revolutionize your shipping operations?': 'هل أنت مستعد لإحداث ثورة في عمليات الشحن الخاصة بك؟',
-            'Join Circle Code today and experience streamlined logistics and satisfied customers.': 'انضم إلى فالكون اليوم واختبر الخدمات اللوجستية المبسطة والعملاء الراضين.',
+            'Join Circle Code today and experience streamlined logistics and satisfied customers.': 'انضم إلى Circle Code اليوم واختبر الخدمات اللوجستية المبسطة والعملاء الراضين.',
             'Sign Up Now': 'سجل الآن',
             
             // Footer
@@ -112,13 +112,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // About page
             'About Us': 'من نحن',
-            'Learn about our journey, mission, and the team behind Circle Code Shipping': 'تعرف على رحلتنا ومهمتنا والفريق وراء فالكون للشحن',
+            'Learn about our journey, mission, and the team behind Circle Code Shipping': 'تعرف على رحلتنا ومهمتنا والفريق وراء Circle Code للشحن',
             'Our Story': 'قصتنا',
             'Our Mission': 'مهمتنا',
             'Our Vision': 'رؤيتنا',
             'Our Values': 'قيمنا',
             'Meet Our Team': 'تعرف على فريقنا',
-            'The passionate professionals behind Circle Code Shipping': 'المحترفون المتحمسون وراء فالكون للشحن',
+            'The passionate professionals behind Circle Code Shipping': 'المحترفون المتحمسون وراء Circle Code للشحن',
             
             // Services page
             'Our Services': 'خدماتنا',
