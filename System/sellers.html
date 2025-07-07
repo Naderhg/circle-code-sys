@@ -33,14 +33,11 @@
             <li>
                 <a href="agents.html"><i class="fas fa-user-tie"></i> Agents</a>
             </li>
-            <li class="shipment-menu">
-                <a href="javascript:void(0);" class="dropdown-toggle"><i class="fas fa-shipping-fast"></i> Shipments <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="shipments.html?status=all"><i class="fas fa-list"></i> All Shipments</a></li>
-                    <li><a href="shipments.html?status=new"><i class="fas fa-plus-circle"></i> New</a></li>
-                    <li><a href="shipments.html?status=instock"><i class="fas fa-warehouse"></i> In Stock</a></li>
-                    <li><a href="shipments.html?status=delivered"><i class="fas fa-box-check"></i> Delivered to Agent</a></li>
-                </ul>
+            <li>
+                <a href="branches.html"><i class="fas fa-store"></i> Branches</a>
+            </li>
+            <li>
+                <a href="shipments.html"><i class="fas fa-shipping-fast"></i> Shipments</a>
             </li>
             <li>
                 <a href="zones.html"><i class="fas fa-map-marked-alt"></i> Zones</a>
@@ -111,6 +108,25 @@
             </div>
         </div>
 
+        <!-- Date Filter -->
+        <div class="date-filter-container">
+            <label>Filter by Date:</label>
+            <div class="date-inputs">
+                <div class="date-input-group">
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate" name="startDate">
+                </div>
+                <div class="date-input-group">
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate" name="endDate">
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button id="applyDateFilter" class="filter-btn"><i class="fas fa-filter"></i> Apply Filter</button>
+                <button id="resetDateFilter" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+            </div>
+        </div>
+
         <!-- Merchant Management Panel -->
         <div class="merchant-management">
             <div class="panel-header">
@@ -119,7 +135,7 @@
                     <button class="import-btn"><i class="fas fa-file-import"></i> Import</button>
                     <button class="export-btn"><i class="fas fa-file-export"></i> Export</button>
                     <button class="print-btn"><i class="fas fa-print"></i> Print</button>
-                    <button class="add-merchant-btn"><i class="fas fa-plus"></i> Add Merchant</button>
+                    <button class="add-merchant-btn" onclick="window.location.href='user-form.html?role=seller'"><i class="fas fa-plus"></i> Add Merchant</button>
                 </div>
             </div>
             
@@ -165,8 +181,8 @@
                             <td>$12,450</td>
                             <td><span class="status active-merchant">ACTIVE</span></td>
                             <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn" onclick="window.location.href='seller-details.html?id=MCH-001'"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn" onclick="window.location.href='user-form.html?role=seller&id=MCH-001'"><i class="fas fa-edit"></i></button>
                                 <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
                             </td>
                         </tr>
@@ -190,8 +206,8 @@
                             <td>$18,920</td>
                             <td><span class="status active-merchant">ACTIVE</span></td>
                             <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
+                                <button class="action-btn" onclick="window.location.href='seller-details.html?id=MCH-002'"><i class="fas fa-eye"></i></button>
+                                <button class="action-btn" onclick="window.location.href='user-form.html?role=seller&id=MCH-002'"><i class="fas fa-edit"></i></button>
                                 <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
                             </td>
                         </tr>
@@ -306,7 +322,18 @@
     </div>
 
     <script src="script.js"></script>
-</body>
-</html> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle
+            const themeToggleBtn = document.querySelector('.theme-toggle-btn');
+            themeToggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                themeToggleBtn.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            });
+            
+            // ... other event handlers ...
+        });
+    </script>
 </body>
 </html> 

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Shipment - CIRCLE CODE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-code"></i></div>
+            <div class="logo-text">
+                <h2>CIRCLE CODE</h2>
+                <p>From Code to Complete Solutions</p>
+            </div>
+        </div>
+
+        <div class="user-welcome">
+            <div class="user-avatar">M</div>
+            <span>Welcome, Admin User</span>
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="sellers.html"><i class="fas fa-store"></i> Merchants</a>
+            </li>
+            <li>
+                <a href="agents.html"><i class="fas fa-user-tie"></i> Agents</a>
+            </li>
+            <li class="active">
+                <a href="shipments.html"><i class="fas fa-shipping-fast"></i> Shipments</a>
+            </li>
+            <li>
+                <a href="zones.html"><i class="fas fa-map-marked-alt"></i> Zones</a>
+            </li>
+            <li>
+                <a href="wallet.html"><i class="fas fa-wallet"></i> Wallet</a>
+            </li>
+            <li>
+                <a href="users.html"><i class="fas fa-users"></i> All Users</a>
+            </li>
+            <li>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li>
+                <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+            </li>
+        </ul>
+
+        <div class="logout">
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <div class="page-title">
+                <h1>New Shipment</h1>
+            </div>
+            <div class="top-bar-right">
+                <button class="notification-btn"><i class="fas fa-bell"></i></button>
+                <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+                <button class="profile-btn"><i class="fas fa-user-circle"></i></button>
+            </div>
+        </div>
+
+        <!-- Shipment Form -->
+        <div class="form-container">
+            <form id="shipmentForm" class="data-form">
+                <div class="form-section">
+                    <h3><i class="fas fa-box"></i> Shipment Details</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="trackingId">Tracking ID</label>
+                            <input type="text" id="trackingId" name="trackingId" class="form-control" placeholder="Auto-generated" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipmentDate">Shipment Date</label>
+                            <input type="date" id="shipmentDate" name="shipmentDate" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="merchantId">Merchant</label>
+                            <select id="merchantId" name="merchantId" class="form-control" required>
+                                <option value="">Select Merchant</option>
+                                <option value="MCH-001">Tech Store</option>
+                                <option value="MCH-002">Fashion Hub</option>
+                                <option value="MCH-003">Book World</option>
+                                <option value="MCH-004">Food Corner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="agentId">Delivery Agent</label>
+                            <select id="agentId" name="agentId" class="form-control" required>
+                                <option value="">Select Agent</option>
+                                <option value="AGT-001">Ahmed Khaled</option>
+                                <option value="AGT-002">Mohamed Ali</option>
+                                <option value="AGT-003">Sara Ahmed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select id="status" name="status" class="form-control" required>
+                                <option value="new">New</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="in-transit">In Transit</option>
+                                <option value="delivered">Delivered</option>
+                                <option value="returned">Returned</option>
+                                <option value="failed">Failed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" name="amount" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Customer Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">Customer Name</label>
+                            <input type="text" id="customerName" name="customerName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number</label>
+                            <input type="tel" id="customerPhone" name="customerPhone" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerEmail">Email (Optional)</label>
+                            <input type="email" id="customerEmail" name="customerEmail" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-map-marker-alt"></i> Delivery Address</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="addressLine1">Address Line 1</label>
+                            <input type="text" id="addressLine1" name="addressLine1" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="addressLine2">Address Line 2 (Optional)</label>
+                            <input type="text" id="addressLine2" name="addressLine2" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zone">Zone</label>
+                            <select id="zone" name="zone" class="form-control" required>
+                                <option value="">Select Zone</option>
+                                <option value="downtown">Downtown</option>
+                                <option value="north">North District</option>
+                                <option value="east">East District</option>
+                                <option value="south">South District</option>
+                                <option value="west">West District</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="postalCode">Postal Code</label>
+                            <input type="text" id="postalCode" name="postalCode" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="landmark">Landmark (Optional)</label>
+                            <input type="text" id="landmark" name="landmark" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-box-open"></i> Package Information</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="packageType">Package Type</label>
+                            <select id="packageType" name="packageType" class="form-control" required>
+                                <option value="parcel">Parcel</option>
+                                <option value="document">Document</option>
+                                <option value="fragile">Fragile</option>
+                                <option value="perishable">Perishable</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">Weight (kg)</label>
+                            <input type="number" id="weight" name="weight" class="form-control" step="0.01" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="notes">Special Instructions</label>
+                            <textarea id="notes" name="notes" class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-light" onclick="window.location.href='shipments.html'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Shipment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set default date to today
+            document.getElementById('shipmentDate').valueAsDate = new Date();
+            
+            // Form submission handler
+            document.getElementById('shipmentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Collect form data
+                const formData = new FormData(this);
+                const shipmentData = {};
+                
+                formData.forEach((value, key) => {
+                    shipmentData[key] = value;
+                });
+                
+                // In a real application, you would send this data to your backend
+                console.log('Shipment data to be submitted:', shipmentData);
+                
+                // Show success message
+                alert('Shipment created successfully!');
+                
+                // Redirect to shipments page
+                window.location.href = 'shipments.html';
+            });
+        });
+    </script>
+</body>
+</html> 

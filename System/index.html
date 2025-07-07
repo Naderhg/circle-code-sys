@@ -33,14 +33,11 @@
             <li>
                 <a href="agents.html"><i class="fas fa-user-tie"></i> Agents</a>
             </li>
-            <li class="shipment-menu">
-                <a href="javascript:void(0);" class="dropdown-toggle"><i class="fas fa-shipping-fast"></i> Shipments <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="shipments.html?status=all"><i class="fas fa-list"></i> All Shipments</a></li>
-                    <li><a href="shipments.html?status=new"><i class="fas fa-plus-circle"></i> New</a></li>
-                    <li><a href="shipments.html?status=instock"><i class="fas fa-warehouse"></i> In Stock</a></li>
-                    <li><a href="shipments.html?status=delivered"><i class="fas fa-box-check"></i> Delivered to Agent</a></li>
-                </ul>
+            <li>
+                <a href="branches.html"><i class="fas fa-store"></i> Branches</a>
+            </li>
+            <li>
+                <a href="shipments.html"><i class="fas fa-shipping-fast"></i> Shipments</a>
             </li>
             <li>
                 <a href="zones.html"><i class="fas fa-map-marked-alt"></i> Zones</a>
@@ -77,7 +74,7 @@
 
         <!-- Dashboard Stats Cards -->
         <div class="stats-container">
-            <div class="stat-card">
+            <div class="stat-card clickable" onclick="window.location.href='shipments.html'">
                 <div class="stat-content">
                     <h3>Total Shipments</h3>
                     <h2>1,247</h2>
@@ -88,7 +85,7 @@
                 </div>
             </div>
 
-            <div class="stat-card">
+            <div class="stat-card clickable" onclick="filterShipmentsByTodayDate()">
                 <div class="stat-content">
                     <h3>In Transit</h3>
                     <h2>89</h2>
@@ -99,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="stat-card">
+            <div class="stat-card clickable" onclick="window.location.href='wallet.html'">
                 <div class="stat-content">
                     <h3>Collection Amount</h3>
                     <h2>$24,580</h2>

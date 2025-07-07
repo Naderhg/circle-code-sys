@@ -33,14 +33,11 @@
             <li>
                 <a href="agents.html"><i class="fas fa-user-tie"></i> Agents</a>
             </li>
-            <li class="active shipment-menu">
-                <a href="javascript:void(0);" class="dropdown-toggle"><i class="fas fa-shipping-fast"></i> Shipments <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="shipments.html?status=all"><i class="fas fa-list"></i> All Shipments</a></li>
-                    <li><a href="shipments.html?status=new"><i class="fas fa-plus-circle"></i> New</a></li>
-                    <li><a href="shipments.html?status=instock"><i class="fas fa-warehouse"></i> In Stock</a></li>
-                    <li><a href="shipments.html?status=delivered"><i class="fas fa-box-check"></i> Delivered to Agent</a></li>
-                </ul>
+            <li>
+                <a href="branches.html"><i class="fas fa-store"></i> Branches</a>
+            </li>
+            <li class="active">
+                <a href="shipments.html"><i class="fas fa-shipping-fast"></i> Shipments</a>
             </li>
             <li>
                 <a href="zones.html"><i class="fas fa-map-marked-alt"></i> Zones</a>
@@ -60,7 +57,7 @@
         </ul>
 
         <div class="logout">
-            <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+            <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Log Out</a>
         </div>
     </div>
 
@@ -83,7 +80,7 @@
             <div class="stat-card">
                 <div class="stat-content">
                     <h3>Total Shipments</h3>
-                    <h2>1,247</h2>
+                    <h2 id="totalShipments">--</h2>
                     <p>All time shipments</p>
                 </div>
                 <div class="stat-icon">
@@ -94,7 +91,7 @@
             <div class="stat-card">
                 <div class="stat-content">
                     <h3>In Transit</h3>
-                    <h2>89</h2>
+                    <h2 id="inTransitShipments">--</h2>
                     <p>Currently in transit</p>
                 </div>
                 <div class="stat-icon">
@@ -105,12 +102,31 @@
             <div class="stat-card">
                 <div class="stat-content">
                     <h3>Delivered Today</h3>
-                    <h2>42</h2>
+                    <h2 id="deliveredToday">--</h2>
                     <p>Successful deliveries</p>
                 </div>
                 <div class="stat-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
+            </div>
+        </div>
+
+        <!-- Date Filter -->
+        <div class="date-filter-container">
+            <label>Filter by Date:</label>
+            <div class="date-inputs">
+                <div class="date-input-group">
+                    <label for="startDate">From:</label>
+                    <input type="date" id="startDate" name="startDate">
+                </div>
+                <div class="date-input-group">
+                    <label for="endDate">To:</label>
+                    <input type="date" id="endDate" name="endDate">
+                </div>
+            </div>
+            <div class="filter-actions">
+                <button id="applyDateFilter" class="filter-btn"><i class="fas fa-filter"></i> Apply Filter</button>
+                <button id="resetDateFilter" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
             </div>
         </div>
 
@@ -120,17 +136,17 @@
                 <h3>Shipment Management</h3>
                 <div class="action-buttons">
                     <button class="import-btn"><i class="fas fa-file-import"></i> Import</button>
-                    <button class="export-btn"><i class="fas fa-file-export"></i> Export</button>
+                    <button class="export-btn" id="exportShipmentsBtn"><i class="fas fa-file-export"></i> Export</button>
                     <button class="print-btn"><i class="fas fa-print"></i> Print</button>
-                    <button class="add-merchant-btn"><i class="fas fa-plus"></i> New Shipment</button>
+                    <button class="add-merchant-btn" onclick="window.location.href='shipment-form.html'"><i class="fas fa-plus"></i> New Shipment</button>
                 </div>
             </div>
             
             <div class="search-container">
-                <input type="text" placeholder="Search shipments..." class="search-input">
+                <input type="text" placeholder="Search shipments..." id="searchInput" class="search-input">
             </div>
             
-            <div class="data-table-container">
+            <div class="data-table-container" id="shipmentsTableContainer">
                 <table class="data-table" id="shipmentsTable">
                     <thead>
                         <tr>
@@ -147,138 +163,374 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="shipmentsTableBody">
+                        <!-- Shipment rows will be loaded here -->
                         <tr>
-                            <td>
-                                <input type="checkbox" class="row-checkbox">
-                            </td>
-                            <td>#SHP-001</td>
-                            <td>John Doe</td>
-                            <td>
-                                <div class="seller-info">
-                                    <div class="seller-avatar ts">TS</div>
-                                    <div>
-                                        <div class="seller-name">Tech Store</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Ahmed K.</td>
-                            <td>2023-05-15</td>
-                            <td>$125.00</td>
-                            <td><span class="status new">NEW</span></td>
-                            <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="row-checkbox">
-                            </td>
-                            <td>#SHP-002</td>
-                            <td>Jane Smith</td>
-                            <td>
-                                <div class="seller-info">
-                                    <div class="seller-avatar fh">FH</div>
-                                    <div>
-                                        <div class="seller-name">Fashion Hub</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Mohamed S.</td>
-                            <td>2023-05-14</td>
-                            <td>$89.50</td>
-                            <td><span class="status in-stock">IN STOCK</span></td>
-                            <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="row-checkbox">
-                            </td>
-                            <td>#SHP-003</td>
-                            <td>Mike Johnson</td>
-                            <td>
-                                <div class="seller-info">
-                                    <div class="seller-avatar bw">BW</div>
-                                    <div>
-                                        <div class="seller-name">Book World</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Ali H.</td>
-                            <td>2023-05-12</td>
-                            <td>$234.75</td>
-                            <td><span class="status delivered">DELIVERED</span></td>
-                            <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" class="row-checkbox">
-                            </td>
-                            <td>#SHP-004</td>
-                            <td>Sarah Wilson</td>
-                            <td>
-                                <div class="seller-info">
-                                    <div class="seller-avatar fc">FC</div>
-                                    <div>
-                                        <div class="seller-name">Food Corner</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Hany T.</td>
-                            <td>2023-05-10</td>
-                            <td>$67.25</td>
-                            <td><span class="status in-transit">IN TRANSIT</span></td>
-                            <td>
-                                <button class="action-btn"><i class="fas fa-eye"></i></button>
-                                <button class="action-btn"><i class="fas fa-edit"></i></button>
-                                <button class="action-btn"><i class="fas fa-ellipsis-v"></i></button>
-                            </td>
+                            <td colspan="9" class="text-center">Loading shipments...</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
-            <!-- Table Footer with Pagination -->
+            <!-- Pagination -->
             <div class="table-footer">
-                <div>Showing 4 of 1,247 shipments</div>
-                <div class="pagination">
-                    <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
-                    <button class="page-btn active">1</button>
-                    <button class="page-btn">2</button>
-                    <button class="page-btn">3</button>
-                    <button class="page-btn">...</button>
-                    <button class="page-btn">Next</button>
+                <div class="pagination" id="shipmentsPagination">
+                    <!-- Pagination controls will be generated here -->
+                </div>
+                <div class="showing-info">
+                    Showing <span id="startRange">0</span>-<span id="endRange">0</span> of <span id="totalItems">0</span> items
                 </div>
             </div>
         </div>
-
-        <div class="bulk-actions" id="bulkActions" style="display: none;">
-            <span class="selected-count" id="selectedCount">0 selected</span>
-            <button class="btn btn-light bulk-action-btn" id="printLabels">
-                <i class="fas fa-print"></i> Print Labels
-            </button>
-            <button class="btn btn-light bulk-action-btn" id="assignAgent">
-                <i class="fas fa-user-tag"></i> Assign Agent
-            </button>
-            <button class="btn btn-light bulk-action-btn" id="markDelivered">
-                <i class="fas fa-check-circle"></i> Mark as Delivered
-            </button>
-            <button class="btn btn-light bulk-action-btn bulk-delete">
-                <i class="fas fa-trash"></i> Delete
-            </button>
-        </div>
     </div>
 
+    <!-- Import required API service scripts -->
+    <script type="module" src="../js/api/config.js"></script>
+    <script type="module" src="../js/api/httpService.js"></script>
+    <script type="module" src="../js/api/shipmentService.js"></script>
+    <script type="module" src="../js/api/authService.js"></script>
+    <script type="module" src="../js/models/shipmentModel.js"></script>
+    
+    <!-- Main script file -->
     <script src="script.js"></script>
+    
+    <!-- Shipment specific module script -->
+    <script type="module">
+        import shipmentService from '../js/api/shipmentService.js';
+        import authService from '../js/api/authService.js';
+        import ShipmentModel from '../js/models/shipmentModel.js';
+        
+        // Check authentication
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Check if user is authenticated, redirect if not
+                if (!authService.isAuthenticated()) {
+                    window.location.href = '/Login/index.html';
+                    return;
+                }
+                
+                // Set up logout button
+                document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    authService.logout();
+                });
+                
+                // Variables for pagination
+                let currentPage = 1;
+                const pageSize = 10;
+                let totalPages = 0;
+                let currentFilters = {};
+                
+                // Load shipments on page load
+                await loadShipmentStats();
+                await loadShipments(currentPage, pageSize, {});
+                
+                // Set up search
+                document.getElementById('searchInput').addEventListener('input', debounce(async function(e) {
+                    const searchTerm = e.target.value.trim();
+                    if (searchTerm) {
+                        currentFilters.searchTerm = searchTerm;
+                    } else {
+                        delete currentFilters.searchTerm;
+                    }
+                    currentPage = 1;
+                    await loadShipments(currentPage, pageSize, currentFilters);
+                }, 500));
+                
+                // Set up date filter
+                document.getElementById('applyDateFilter').addEventListener('click', async function() {
+                    const startDate = document.getElementById('startDate').value;
+                    const endDate = document.getElementById('endDate').value;
+                    
+                    if (startDate && endDate) {
+                        currentFilters.startDate = startDate;
+                        currentFilters.endDate = endDate;
+                    } else {
+                        delete currentFilters.startDate;
+                        delete currentFilters.endDate;
+                    }
+                    
+                    currentPage = 1;
+                    await loadShipments(currentPage, pageSize, currentFilters);
+                });
+                
+                // Reset date filter
+                document.getElementById('resetDateFilter').addEventListener('click', async function() {
+                    document.getElementById('startDate').value = '';
+                    document.getElementById('endDate').value = '';
+                    
+                    delete currentFilters.startDate;
+                    delete currentFilters.endDate;
+                    
+                    currentPage = 1;
+                    await loadShipments(currentPage, pageSize, currentFilters);
+                });
+                
+                // Export shipments
+                document.getElementById('exportShipmentsBtn').addEventListener('click', function() {
+                    shipmentService.exportShipments(currentFilters);
+                });
+                
+                /**
+                 * Load shipment statistics
+                 */
+                async function loadShipmentStats() {
+                    try {
+                        const stats = await shipmentService.getShipmentStats();
+                        
+                        document.getElementById('totalShipments').textContent = stats.totalShipments.toLocaleString();
+                        document.getElementById('inTransitShipments').textContent = stats.inTransit.toLocaleString();
+                        document.getElementById('deliveredToday').textContent = stats.deliveredToday.toLocaleString();
+                    } catch (error) {
+                        console.error('Error loading shipment stats:', error);
+                    }
+                }
+                
+                /**
+                 * Load shipments with pagination and filtering
+                 * @param {number} page - Page number
+                 * @param {number} pageSize - Number of items per page
+                 * @param {object} filters - Filter criteria
+                 */
+                async function loadShipments(page, pageSize, filters = {}) {
+                    try {
+                        // Show loading state
+                        const tableContainer = document.getElementById('shipmentsTableContainer');
+                        tableContainer.classList.add('loading');
+                        
+                        // Clear table body
+                        const tableBody = document.getElementById('shipmentsTableBody');
+                        tableBody.innerHTML = '<tr><td colspan="9" class="text-center">Loading shipments...</td></tr>';
+                        
+                        // Load shipments from API
+                        const response = await shipmentService.getShipments(page, pageSize, filters);
+                        
+                        // Update pagination info
+                        totalPages = Math.ceil(response.total / pageSize);
+                        document.getElementById('startRange').textContent = ((page - 1) * pageSize + 1).toLocaleString();
+                        document.getElementById('endRange').textContent = Math.min(page * pageSize, response.total).toLocaleString();
+                        document.getElementById('totalItems').textContent = response.total.toLocaleString();
+                        
+                        // Generate table rows
+                        if (response.data.length === 0) {
+                            tableBody.innerHTML = '<tr><td colspan="9" class="text-center">No shipments found</td></tr>';
+                        } else {
+                            tableBody.innerHTML = '';
+                            response.data.forEach(shipment => {
+                                const shipmentModel = new ShipmentModel(shipment);
+                                const formattedDates = shipmentModel.getFormattedDates();
+                                
+                                const row = document.createElement('tr');
+                                row.innerHTML = `
+                                    <td>
+                                        <input type="checkbox" class="row-checkbox" data-id="${shipmentModel.id}">
+                                    </td>
+                                    <td>#${shipmentModel.trackingNumber || shipmentModel.id}</td>
+                                    <td>${shipmentModel.customerName}</td>
+                                    <td>
+                                        <div class="seller-info">
+                                            <div class="seller-avatar ${getMerchantInitials(shipmentModel.merchant?.name)}">${getMerchantInitials(shipmentModel.merchant?.name)}</div>
+                                            <div>
+                                                <div class="seller-name">${shipmentModel.merchant?.name || 'N/A'}</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>${shipmentModel.agent?.name || 'Not Assigned'}</td>
+                                    <td>${formattedDates.created}</td>
+                                    <td>${formatCurrency(shipmentModel.paymentDetails?.amount || 0)}</td>
+                                    <td><span class="status ${getStatusClass(shipmentModel.status)}">${formatStatus(shipmentModel.status)}</span></td>
+                                    <td>
+                                        <button class="action-btn" onclick="window.location.href='shipment-details.html?id=${shipmentModel.id}'"><i class="fas fa-eye"></i></button>
+                                        <button class="action-btn" onclick="window.location.href='shipment-form.html?id=${shipmentModel.id}'"><i class="fas fa-edit"></i></button>
+                                        <button class="action-btn" onclick="confirmDeleteShipment('${shipmentModel.id}')"><i class="fas fa-trash"></i></button>
+                                    </td>
+                                `;
+                                tableBody.appendChild(row);
+                            });
+                            
+                            // Set up row selection
+                            setupRowSelection();
+                        }
+                        
+                        // Generate pagination controls
+                        generatePagination(page, totalPages);
+                    } catch (error) {
+                        console.error('Error loading shipments:', error);
+                        const tableBody = document.getElementById('shipmentsTableBody');
+                        tableBody.innerHTML = '<tr><td colspan="9" class="text-center">Error loading shipments</td></tr>';
+                    } finally {
+                        // Hide loading state
+                        const tableContainer = document.getElementById('shipmentsTableContainer');
+                        tableContainer.classList.remove('loading');
+                    }
+                }
+                
+                /**
+                 * Generate pagination controls
+                 * @param {number} currentPage - Current page number
+                 * @param {number} totalPages - Total number of pages
+                 */
+                function generatePagination(currentPage, totalPages) {
+                    const pagination = document.getElementById('shipmentsPagination');
+                    pagination.innerHTML = '';
+                    
+                    // Previous button
+                    const prevBtn = document.createElement('button');
+                    prevBtn.className = `page-btn ${currentPage === 1 ? 'disabled' : ''}`;
+                    prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                    if (currentPage > 1) {
+                        prevBtn.addEventListener('click', () => loadShipments(currentPage - 1, pageSize, currentFilters));
+                    }
+                    pagination.appendChild(prevBtn);
+                    
+                    // Page buttons
+                    let startPage = Math.max(1, currentPage - 2);
+                    let endPage = Math.min(totalPages, startPage + 4);
+                    
+                    if (endPage - startPage < 4) {
+                        startPage = Math.max(1, endPage - 4);
+                    }
+                    
+                    for (let i = startPage; i <= endPage; i++) {
+                        const pageBtn = document.createElement('button');
+                        pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
+                        pageBtn.textContent = i;
+                        pageBtn.addEventListener('click', () => loadShipments(i, pageSize, currentFilters));
+                        pagination.appendChild(pageBtn);
+                    }
+                    
+                    // Next button
+                    const nextBtn = document.createElement('button');
+                    nextBtn.className = `page-btn ${currentPage === totalPages ? 'disabled' : ''}`;
+                    nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                    if (currentPage < totalPages) {
+                        nextBtn.addEventListener('click', () => loadShipments(currentPage + 1, pageSize, currentFilters));
+                    }
+                    pagination.appendChild(nextBtn);
+                }
+                
+                /**
+                 * Get merchant initials for avatar
+                 * @param {string} merchantName - Merchant name
+                 * @returns {string} - Merchant initials
+                 */
+                function getMerchantInitials(merchantName) {
+                    if (!merchantName) return 'NA';
+                    
+                    const words = merchantName.split(' ');
+                    if (words.length === 1) {
+                        return words[0].substring(0, 2).toUpperCase();
+                    }
+                    
+                    return (words[0][0] + words[1][0]).toUpperCase();
+                }
+                
+                /**
+                 * Format currency amount
+                 * @param {number} amount - Amount to format
+                 * @returns {string} - Formatted amount
+                 */
+                function formatCurrency(amount) {
+                    return new Intl.NumberFormat('en-US', {
+                        style: 'currency',
+                        currency: 'USD'
+                    }).format(amount);
+                }
+                
+                /**
+                 * Get CSS class for shipment status
+                 * @param {string} status - Shipment status
+                 * @returns {string} - CSS class
+                 */
+                function getStatusClass(status) {
+                    switch (status) {
+                        case 'NEW': return 'new';
+                        case 'IN_TRANSIT': return 'in-transit';
+                        case 'DELIVERED': return 'delivered';
+                        case 'CANCELLED': return 'failed';
+                        case 'RETURNED': return 'returned';
+                        case 'IN_STOCK': return 'in-stock';
+                        default: return 'pending';
+                    }
+                }
+                
+                /**
+                 * Format status for display
+                 * @param {string} status - Shipment status
+                 * @returns {string} - Formatted status
+                 */
+                function formatStatus(status) {
+                    return status.replace(/_/g, ' ');
+                }
+                
+                /**
+                 * Set up row selection functionality
+                 */
+                function setupRowSelection() {
+                    const selectAll = document.getElementById('selectAll');
+                    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+                    
+                    selectAll.addEventListener('change', function() {
+                        const isChecked = this.checked;
+                        rowCheckboxes.forEach(checkbox => {
+                            checkbox.checked = isChecked;
+                        });
+                        
+                        updateBulkActionsVisibility();
+                    });
+                    
+                    rowCheckboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', function() {
+                            updateBulkActionsVisibility();
+                            
+                            // Update "select all" checkbox state
+                            const allChecked = document.querySelectorAll('.row-checkbox:checked').length === rowCheckboxes.length;
+                            selectAll.checked = allChecked;
+                        });
+                    });
+                }
+                
+                /**
+                 * Update bulk actions visibility
+                 */
+                function updateBulkActionsVisibility() {
+                    const selectedCount = document.querySelectorAll('.row-checkbox:checked').length;
+                    // Implementation depends on your UI for bulk actions
+                }
+                
+                /**
+                 * Debounce function to prevent excessive API calls
+                 * @param {Function} func - Function to debounce
+                 * @param {number} wait - Wait time in milliseconds
+                 * @returns {Function} - Debounced function
+                 */
+                function debounce(func, wait) {
+                    let timeout;
+                    return function(...args) {
+                        clearTimeout(timeout);
+                        timeout = setTimeout(() => func.apply(this, args), wait);
+                    };
+                }
+                
+                // Make this function available globally
+                window.confirmDeleteShipment = async function(id) {
+                    if (confirm('Are you sure you want to delete this shipment? This action cannot be undone.')) {
+                        try {
+                            await shipmentService.deleteShipment(id);
+                            // Reload shipments after deletion
+                            await loadShipments(currentPage, pageSize, currentFilters);
+                            // Reload stats
+                            await loadShipmentStats();
+                        } catch (error) {
+                            console.error('Error deleting shipment:', error);
+                            alert('Failed to delete shipment. Please try again.');
+                        }
+                    }
+                };
+            } catch (error) {
+                console.error('Error initializing shipments page:', error);
+            }
+        });
+    </script>
 </body>
 </html> 

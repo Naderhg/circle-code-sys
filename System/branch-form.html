@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Branch Form - CIRCLE CODE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon"><i class="fas fa-code"></i></div>
+            <div class="logo-text">
+                <h2>CIRCLE CODE</h2>
+                <p>From Code to Complete Solutions</p>
+            </div>
+        </div>
+
+        <div class="user-welcome">
+            <div class="user-avatar">M</div>
+            <span>Welcome, Admin User</span>
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="sellers.html"><i class="fas fa-store"></i> Merchants</a>
+            </li>
+            <li>
+                <a href="agents.html"><i class="fas fa-user-tie"></i> Agents</a>
+            </li>
+            <li>
+                <a href="shipments.html"><i class="fas fa-shipping-fast"></i> Shipments</a>
+            </li>
+            <li class="active">
+                <a href="branches.html"><i class="fas fa-building"></i> Branches</a>
+            </li>
+            <li>
+                <a href="zones.html"><i class="fas fa-map-marked-alt"></i> Zones</a>
+            </li>
+            <li>
+                <a href="wallet.html"><i class="fas fa-wallet"></i> Wallet</a>
+            </li>
+            <li>
+                <a href="users.html"><i class="fas fa-users"></i> All Users</a>
+            </li>
+            <li>
+                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+            </li>
+            <li>
+                <a href="reports.html"><i class="fas fa-chart-line"></i> Reports</a>
+            </li>
+        </ul>
+
+        <div class="logout">
+            <a href="#"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <h1>Branch Form</h1>
+            <div class="top-bar-right">
+                <button class="notification-btn"><i class="fas fa-bell"></i></button>
+                <button class="theme-toggle-btn"><i class="fas fa-moon"></i></button>
+                <button class="profile-btn"><i class="fas fa-user-circle"></i></button>
+            </div>
+        </div>
+
+        <!-- Branch Form Panel -->
+        <div class="merchant-management">
+            <div class="panel-header">
+                <h3>Branch Information</h3>
+            </div>
+            
+            <form class="data-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branchName">Branch Name <span class="required">*</span></label>
+                        <input type="text" id="branchName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="branchStatus">Status <span class="required">*</span></label>
+                        <select id="branchStatus" class="form-control" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="branchAddress">Address <span class="required">*</span></label>
+                    <input type="text" id="branchAddress" class="form-control" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branchCity">City <span class="required">*</span></label>
+                        <input type="text" id="branchCity" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="branchZone">Zone <span class="required">*</span></label>
+                        <select id="branchZone" class="form-control" required>
+                            <option value="">-- Select Zone --</option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Delta">Delta</option>
+                            <option value="Upper Egypt">Upper Egypt</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="branchPhone">Phone <span class="required">*</span></label>
+                        <input type="tel" id="branchPhone" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="branchEmail">Email <span class="required">*</span></label>
+                        <input type="email" id="branchEmail" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="branchManager">Branch Manager <span class="required">*</span></label>
+                    <select id="branchManager" class="form-control" required>
+                        <option value="">-- Select Manager --</option>
+                        <option value="1">Ahmed Mohamed</option>
+                        <option value="2">Sara Ali</option>
+                        <option value="3">Mohamed Ahmed</option>
+                        <option value="4">Layla Hassan</option>
+                        <option value="5">Omar Ibrahim</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="staffCount">Staff Count <span class="required">*</span></label>
+                        <input type="number" id="staffCount" class="form-control" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="workingHours">Working Hours</label>
+                        <input type="text" id="workingHours" class="form-control" placeholder="e.g. 9:00 AM - 5:00 PM">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="branchNotes">Notes</label>
+                    <textarea id="branchNotes" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='branches.html'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Branch</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if we're in edit mode by looking for a branch ID in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const branchId = urlParams.get('id');
+            
+            if (branchId) {
+                // We're in edit mode, load branch data
+                document.querySelector('.top-bar h1').textContent = 'Edit Branch';
+                document.querySelector('.panel-header h3').textContent = 'Edit Branch Information';
+                
+                // This would typically fetch data from an API
+                // For now, we'll simulate with some sample data based on ID
+                if (branchId === '1') {
+                    // Cairo Main Branch
+                    document.getElementById('branchName').value = 'Cairo Main Branch';
+                    document.getElementById('branchStatus').value = 'active';
+                    document.getElementById('branchAddress').value = '123 Tahrir St.';
+                    document.getElementById('branchCity').value = 'Cairo';
+                    document.getElementById('branchZone').value = 'Cairo';
+                    document.getElementById('branchPhone').value = '+20 1234567890';
+                    document.getElementById('branchEmail').value = 'cairo.main@circlecode.com';
+                    document.getElementById('branchManager').value = '1'; // Ahmed Mohamed
+                    document.getElementById('staffCount').value = '15';
+                    document.getElementById('workingHours').value = '9:00 AM - 6:00 PM';
+                    document.getElementById('branchNotes').value = 'Main headquarters branch with full services.';
+                } else if (branchId === '2') {
+                    // Alexandria Branch
+                    document.getElementById('branchName').value = 'Alexandria Branch';
+                    document.getElementById('branchStatus').value = 'active';
+                    document.getElementById('branchAddress').value = '45 Corniche Rd.';
+                    document.getElementById('branchCity').value = 'Alexandria';
+                    document.getElementById('branchZone').value = 'Alexandria';
+                    document.getElementById('branchPhone').value = '+20 2345678901';
+                    document.getElementById('branchEmail').value = 'alexandria@circlecode.com';
+                    document.getElementById('branchManager').value = '2'; // Sara Ali
+                    document.getElementById('staffCount').value = '12';
+                    document.getElementById('workingHours').value = '8:30 AM - 5:30 PM';
+                    document.getElementById('branchNotes').value = 'Coastal branch serving Alexandria and surrounding areas.';
+                }
+            }
+            
+            // Form submission handler
+            document.querySelector('.data-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // This would typically send data to an API
+                // For now, we'll just show a success message and redirect
+                alert('Branch saved successfully!');
+                window.location.href = 'branches.html';
+            });
+        });
+    </script>
+</body>
+</html> 
