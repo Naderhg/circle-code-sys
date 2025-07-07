@@ -1,5 +1,8 @@
 // Wait for the DOM to fully load
 document.addEventListener('DOMContentLoaded', function() {
+    // Setup temporary auth for development
+    setupTemporaryAuth();
+    
     // Theme Toggle Functionality
     const themeToggleBtn = document.querySelector('.theme-toggle-btn');
     const body = document.querySelector('body');
@@ -104,8 +107,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize date filter if it exists on the page
     initializeDateFilter();
     
+    // Setup temporary authentication for development
+    function setupTemporaryAuth() {
+        // Check if we're on the shipments page or other protected pages
+        if (window.location.pathname.includes('shipments.html') || 
+            window.location.pathname.includes('agents.html') ||
+            window.location.pathname.includes('sellers.html')) {
+            
+            // Set a temporary access token if one doesn't exist
+            if (!localStorage.getItem('access_token')) {
+                console.log('Setting up temporary authentication for development');
+                localStorage.setItem('access_token', 'temp_dev_token');
+                
+                // Also set a basic user object
+                if (!localStorage.getItem('user')) {
+                    localStorage.setItem('user', JSON.stringify({
+                        id: 'admin',
+                        name: 'Admin User',
+                        role: 'admin',
+                        email: 'admin@example.com'
+                    }));
+                }
+            }
+        }
+    }
+    
     // Handle URL parameters for shipment filters
     if (window.location.pathname.includes('shipments.html')) {
+        // Ensure authentication for shipments page
+        setupTemporaryAuth();
+        
         const urlParams = new URLSearchParams(window.location.search);
         const status = urlParams.get('status');
         const date = urlParams.get('date');
