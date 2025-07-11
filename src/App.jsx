@@ -6,11 +6,12 @@ import HomePage from "./pages/home/Homepage";
 import AboutPage from "./pages/about/AboutPage";
 import ServicesPage from "./pages/services/ServicesPage";
 import ContactPage from "./pages/contact/ContactPage";
-import SignIn from "./pages/auth/SignIn";
-import SignUp from "./pages/auth/SignUp";
+import SignIn from "./pages/auth/components/SignIn";
+import SignUp from "./pages/auth/components/SignUp";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./layouts/MainLayout";
 import PublicLayout from "./layouts/PublicLayout";
+import AuthPage from "./pages/auth/AuthPage";
 
 export default function App() {
   return (
@@ -21,8 +22,7 @@ export default function App() {
             <Route path="admin" element={<AdminPage />} />
             <Route path="client" element={<ClientPage />} />
             <Route path="agent" element={<AgentPage />} />
-            <Route path="signin" element={<SignIn />} />
-            <Route path="signup" element={<SignUp />} />
+            <Route path="auth" element={<AuthPage />} />
           </Route>
 
           {/* Routes with PublicLayout */}
