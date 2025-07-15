@@ -1,0 +1,340 @@
+/* Dashboard Styles */
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  margin-left: 250px;
+  transition: all 0.3s ease;
+}
+
+/* Stats Cards */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card.clickable {
+  cursor: pointer;
+}
+
+.stat-card.clickable:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-content h3 {
+  font-size: 16px;
+  color: #67748e;
+  margin: 0 0 10px 0;
+}
+
+.stat-content h2 {
+  font-size: 28px;
+  color: #344767;
+  margin: 0 0 5px 0;
+}
+
+.stat-content p {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+.stat-icon {
+  background-color: #f6f8fd;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #2d62ed;
+}
+
+/* Panels */
+.merchant-management {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.panel-header {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eef0f5;
+}
+
+.panel-header h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #344767;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: background-color 0.2s;
+  border: none;
+}
+
+.export-btn, .print-btn {
+  background-color: #f6f8fd;
+  color: #2d62ed;
+}
+
+.export-btn:hover, .print-btn:hover {
+  background-color: #e9ecf8;
+}
+
+.add-merchant-btn {
+  background-color: #2d62ed;
+  color: white;
+}
+
+.add-merchant-btn:hover {
+  background-color: #1b4fd8;
+}
+
+/* Chart Placeholder */
+.activity-chart {
+  padding: 20px;
+}
+
+.chart-placeholder {
+  height: 200px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+
+.chart-placeholder i, .chart-placeholder svg {
+  font-size: 40px;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+/* Data Table */
+.data-table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background-color: #f6f8fd;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #344767;
+  font-size: 14px;
+}
+
+.data-table td {
+  padding: 12px 15px;
+  border-top: 1px solid #eef0f5;
+  color: #67748e;
+  font-size: 14px;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.data-table tbody tr.clickable {
+  cursor: pointer;
+}
+
+/* Status Badges */
+.status {
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.pending {
+  background-color: #fff8e1;
+  color: #ffa000;
+}
+
+.status.in-transit {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status.delivered {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status.returned {
+  background-color: #fbe9e7;
+  color: #d84315;
+}
+
+/* Action Buttons in Table */
+.action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f6f8fd;
+  color: #67748e;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.action-btn:hover {
+  background-color: #e9ecf8;
+  color: #2d62ed;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 40px 20px;
+  text-align: center;
+  color: #999;
+}
+
+/* Loading Spinner */
+.loading-spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2d62ed;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #1a1f2b;
+  color: #e4e6eb;
+}
+
+body.dark-mode .main-content {
+  background-color: #1a1f2b;
+}
+
+body.dark-mode .merchant-management,
+body.dark-mode .stat-card {
+  background-color: #242836;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .panel-header {
+  border-bottom-color: #2d3348;
+}
+
+body.dark-mode .data-table th {
+  background-color: #2d3348;
+  color: #e4e6eb;
+}
+
+body.dark-mode .data-table td {
+  border-top-color: #2d3348;
+  color: #b4bac4;
+}
+
+body.dark-mode .data-table tbody tr:hover {
+  background-color: #2a2f3f;
+}
+
+body.dark-mode .chart-placeholder {
+  border-color: #3a3f50;
+  color: #b4bac4;
+}
+
+body.dark-mode .stat-content h3,
+body.dark-mode .stat-content p {
+  color: #b4bac4;
+}
+
+body.dark-mode .stat-content h2,
+body.dark-mode .panel-header h3 {
+  color: #e4e6eb;
+}
+
+body.dark-mode .action-btn,
+body.dark-mode .export-btn,
+body.dark-mode .print-btn {
+  background-color: #2d3348;
+  color: #b4bac4;
+}
+
+body.dark-mode .action-btn:hover,
+body.dark-mode .export-btn:hover,
+body.dark-mode .print-btn:hover {
+  background-color: #3a3f50;
+  color: #e4e6eb;
+}
+
+body.dark-mode .stat-icon {
+  background-color: #2d3348;
+  color: #4d7df9;
+} 

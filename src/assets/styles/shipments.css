@@ -1,0 +1,210 @@
+/* Shipments Page Styles */
+
+/* Filter Panel */
+.filter-panel {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.filter-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.filter-item label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #67748e;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e5ec;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #344767;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: #2d62ed;
+}
+
+.date-input {
+  width: calc(50% - 10px);
+  display: inline-block;
+}
+
+.filter-item span {
+  display: inline-block;
+  margin: 0 5px;
+  color: #67748e;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: #67748e;
+  cursor: pointer;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.apply-filter-btn, .reset-filter-btn {
+  padding: 8px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.apply-filter-btn {
+  background-color: #2d62ed;
+  color: white;
+}
+
+.apply-filter-btn:hover {
+  background-color: #1b4fd8;
+}
+
+.reset-filter-btn {
+  background-color: #f6f8fd;
+  color: #67748e;
+}
+
+.reset-filter-btn:hover {
+  background-color: #e9ecf8;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.page-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background-color: #f6f8fd;
+  color: #67748e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: #e9ecf8;
+}
+
+.page-number {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background-color: transparent;
+  color: #67748e;
+  margin: 0 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-number.active {
+  background-color: #2d62ed;
+  color: white;
+}
+
+.page-number:hover:not(.active) {
+  background-color: #f6f8fd;
+}
+
+.page-ellipsis {
+  margin: 0 3px;
+  color: #67748e;
+}
+
+/* Dark Mode */
+body.dark-mode .filter-panel {
+  background-color: #242836;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .filter-item label {
+  color: #b4bac4;
+}
+
+body.dark-mode .filter-input {
+  background-color: #2d3348;
+  border-color: #3a3f50;
+  color: #e4e6eb;
+}
+
+body.dark-mode .filter-input:focus {
+  border-color: #4d7df9;
+}
+
+body.dark-mode .reset-filter-btn {
+  background-color: #2d3348;
+  color: #b4bac4;
+}
+
+body.dark-mode .reset-filter-btn:hover {
+  background-color: #3a3f50;
+}
+
+body.dark-mode .page-btn,
+body.dark-mode .page-number:hover:not(.active) {
+  background-color: #2d3348;
+  color: #b4bac4;
+}
+
+body.dark-mode .page-number {
+  color: #b4bac4;
+}
+
+body.dark-mode .page-ellipsis {
+  color: #b4bac4;
+}
+
+body.dark-mode .page-btn:hover:not(:disabled) {
+  background-color: #3a3f50;
+} 
