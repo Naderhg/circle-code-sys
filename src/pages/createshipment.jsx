@@ -37,6 +37,8 @@ const CreateShipment = () => {
     products: [
       { name: '', quantity: 1, price: 0, total: 0 }
     ],
+    productsCost: 0,
+    deliveryCost: 10, // Default delivery cost
     grandTotal: 0
   });
   
@@ -71,12 +73,14 @@ const CreateShipment = () => {
       newProducts[index].total = qty * price;
     }
     
-    // Update products and recalculate grand total
-    const grandTotal = newProducts.reduce((sum, product) => sum + product.total, 0);
+    // Update products and recalculate costs
+    const productsCost = newProducts.reduce((sum, product) => sum + product.total, 0);
+    const grandTotal = productsCost + formData.deliveryCost;
     
     setFormData(prevData => ({
       ...prevData,
       products: newProducts,
+      productsCost,
       grandTotal
     }));
   };
@@ -100,17 +104,32 @@ const CreateShipment = () => {
       setFormData(prevData => ({
         ...prevData,
         products: clearedProducts,
-        grandTotal: 0
+        productsCost: 0,
+        grandTotal: formData.deliveryCost
       }));
       return;
     }
     
     const newProducts = formData.products.filter((_, i) => i !== index);
-    const grandTotal = newProducts.reduce((sum, product) => sum + product.total, 0);
+    const productsCost = newProducts.reduce((sum, product) => sum + product.total, 0);
+    const grandTotal = productsCost + formData.deliveryCost;
     
     setFormData(prevData => ({
       ...prevData,
       products: newProducts,
+      productsCost,
+      grandTotal
+    }));
+  };
+
+  // Handle delivery cost change
+  const handleDeliveryCostChange = (value) => {
+    const deliveryCost = parseFloat(value) || 0;
+    const grandTotal = formData.productsCost + deliveryCost;
+    
+    setFormData(prevData => ({
+      ...prevData,
+      deliveryCost,
       grandTotal
     }));
   };
@@ -127,6 +146,8 @@ const CreateShipment = () => {
       const shipmentData = {
         customerName: formData.receiver.name,
         amount: formData.grandTotal,
+        productsCost: formData.productsCost,
+        deliveryCost: formData.deliveryCost,
         status: 'pending',
         sender: formData.sender,
         receiver: formData.receiver,
@@ -399,8 +420,27 @@ const CreateShipment = () => {
               </tbody>
               <tfoot>
                 <tr>
-                  <td colSpan="3" style={{ textAlign: "right" }}>Grand Total:</td>
-                  <td id="grandTotal">${formData.grandTotal.toFixed(2)}</td>
+                  <td colSpan="3" style={{ textAlign: "right" }}>Products Cost:</td>
+                  <td id="productsCost">${formData.productsCost.toFixed(2)}</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textAlign: "right" }}>Delivery Cost:</td>
+                  <td>
+                    <input 
+                      type="number" 
+                      min="0" 
+                      step="0.01"
+                      value={formData.deliveryCost}
+                      onChange={(e) => handleDeliveryCostChange(e.target.value)}
+                      style={{ width: "80px" }}
+                    />
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colSpan="3" style={{ textAlign: "right" }}><strong>Total Cost:</strong></td>
+                  <td id="grandTotal"><strong>${formData.grandTotal.toFixed(2)}</strong></td>
                   <td>
                     <button 
                       type="button" 

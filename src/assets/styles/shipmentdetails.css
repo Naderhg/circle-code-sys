@@ -1,0 +1,228 @@
+/* Shipment Details Styles */
+
+.shipment-details-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Bill of Lading Print Layout */
+.bill-of-lading {
+  font-family: Arial, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.bill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #000;
+}
+
+.company-logo {
+  max-width: 150px;
+}
+
+.bill-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+  text-transform: uppercase;
+}
+
+.barcode-container {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.shipment-id {
+  display: block;
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.bill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.bill-info-section {
+  flex: 1;
+  padding: 10px;
+}
+
+.bill-info-section h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.bill-info-row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.bill-info-label {
+  font-weight: bold;
+  width: 40%;
+  font-size: 14px;
+}
+
+.bill-info-value {
+  width: 60%;
+  font-size: 14px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.products-table th,
+.products-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.products-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.costs-summary {
+  width: 40%;
+  margin-left: auto;
+}
+
+.costs-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+
+.costs-row.total {
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.signature-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.signature-box {
+  width: 45%;
+}
+
+.signature-line {
+  border-top: 1px solid #000;
+  margin-top: 50px;
+  padding-top: 5px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.terms-conditions {
+  font-size: 12px;
+  color: #666;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+/* Print specific styles */
+@media print {
+  .app-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page-content {
+    padding: 0 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .bill-of-lading,
+  .bill-of-lading * {
+    visibility: visible;
+  }
+
+  .bill-of-lading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-shadow: none;
+  }
+
+  .action-buttons {
+    display: none !important;
+  }
+
+  h2 {
+    display: none !important;
+  }
+}
+
+/* Dark Mode */
+body.dark-mode .shipment-details-container {
+  background-color: #242836;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .bill-of-lading {
+  background-color: #242836;
+  border-color: #3a3f50;
+  color: #e4e6eb;
+}
+
+body.dark-mode .products-table th {
+  background-color: #2d3348;
+}
+
+body.dark-mode .products-table th,
+body.dark-mode .products-table td {
+  border-color: #3a3f50;
+}
+
+body.dark-mode .terms-conditions {
+  color: #b4bac4;
+  border-color: #3a3f50;
+}
+
+@media print {
+  body.dark-mode .bill-of-lading,
+  body.dark-mode .bill-of-lading * {
+    color: #000 !important;
+    background-color: white !important;
+  }
+} 

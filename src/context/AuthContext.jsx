@@ -11,11 +11,19 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        const token = localStorage.getItem('access_token');
-        if (token) {
-          const userData = await getCurrentUser();
-          setCurrentUser(userData);
-        }
+        //const token = localStorage.getItem('access_token');
+        //if (token) {
+          //const userData = await getCurrentUser();
+          //setCurrentUser(userData);
+        //}
+        // Automatically set a mock user without checking for token
+        const mockUser = { 
+          id: 1, 
+          name: "Seller Account", 
+          email: "seller@example.com", 
+          role: "seller" 
+        };
+        setCurrentUser(mockUser);
       } catch (err) {
         console.error('Auth initialization error:', err);
         setError(err.message);
