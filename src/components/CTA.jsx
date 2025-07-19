@@ -14,8 +14,8 @@ export default function CTA() {
             satisfied customers.
           </p>
         </div>
-        <Link to="/signup">
-          <Button variant="light" className="mt-6 md:mt-0">
+        <Link to="/auth?signup=true">
+          <Button variant="outline" className="mt-6 md:mt-0 text-blue-700">
             Sign Up Now
           </Button>
         </Link>

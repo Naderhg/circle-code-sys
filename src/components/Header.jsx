@@ -63,7 +63,7 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link to="/signin">
+          <Link to="/auth?signin=true">
             <Button variant="outline" className="btn-sign-in">
               Sign In
             </Button>

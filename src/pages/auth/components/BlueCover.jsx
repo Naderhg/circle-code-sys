@@ -1,6 +1,6 @@
 import { Button } from "../../../components/ui/button";
 
-function BlueCover({ isSignIn, setIsSignIn }) {
+function BlueCover({ isSignIn, toggleSignIn }) {
   return (
     <div
       className={`absolute inset-y-0 right-0 w-1/2 bg-gradient-to-br from-blue-500 to-blue-700 p-8 md:p-12 flex flex-col justify-center items-center text-white overflow-hidden blue-cover-slide z-10 ${
@@ -37,7 +37,7 @@ function BlueCover({ isSignIn, setIsSignIn }) {
         <Button
           variant="outline"
           className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300 bg-transparent hover:scale-105 active:scale-95"
-          onClick={() => setIsSignIn(!isSignIn)}
+          onClick={() => toggleSignIn()}
         >
           {isSignIn ? "SIGN UP" : "SIGN IN"}
         </Button>
